@@ -1,0 +1,63 @@
+body {
+    background-color: #d4d3d6;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+    font-family: "Courier New", Courier, monospace;
+}
+#main {
+    max-width: 800px;
+    height: 80vh;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #000;
+    margin-top: 2rem;
+    background-color: #eef0f5;
+    border: 2px inset rgb(27, 27, 27);
+    padding: 1rem 1rem;
+}
+a {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #3b0a72;
+}
+input[type="text"],
+input[type="number"] {
+    padding: 0.25rem;
+    border: 2px inset rgb(27, 27, 27);
+    background-color: #d7dee0;
+    font-family: inherit;
+    color: #000;
+    outline: #3b0a72;
+}
+input[type="text"]::placeholder {
+    font-style: italic;
+}
+select {
+    padding: 0.25rem;
+    border: 2px inset rgb(27, 27, 27);
+    background-color: #d7dee0;
+    font-family: inherit;
+    color: #000;
+}
+button {
+    padding: 0.5rem;
+    border: 2px inset rgb(27, 27, 27);
+    background-color: #d7dee0;
+    font-family: inherit;
+    color: #000;
+    cursor: pointer;
+}
+
+.foot {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    text-align: center;
+    color: #000;
+    font-size: 0.75rem;
+}

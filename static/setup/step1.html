@@ -1,0 +1,46 @@
+<div class="setup-setting">
+    <h2>Name your guestbook</h2>
+    <input type="text" id="name" placeholder="Type a name..." />
+</div>
+<div class="setup-setting">
+    <h2>Write a short description for your guestbook</h2>
+    <input
+        type="text"
+        id="description"
+        placeholder="Hi! Leave your name and a message! (or something like that)"
+    />
+</div>
+<div class="setup-setting">
+    <h2>Choose a theme</h2>
+    <p>
+        You can pick one of the premade themes or create your own CSS! (Hint:
+        Choosing a theme from the dropdown will update the page to show you what
+        that theme looks like.)
+    </p>
+    <select id="theme">
+        <option value="retro-space">Retro Space</option>
+        <option value="retro-dark">Retro Dark</option>
+        <option value="retro-light">Retro Light</option>
+        <option value="modern-dark">Modern Dark</option>
+        <option value="modern-light">Modern Light</option>
+        <option value="custom">Custom!</option>
+    </select>
+    <p id="custom-css-p">
+        Custom CSS: (Hint: It is recommended to see CSS for existing themes in
+        the
+        <a href="https://github.com/jab11n/openguestbook">GitHub Repo</a> for
+        reference - see static/retrospace.css and other CSS files.)
+    </p>
+    <textarea id="custom-css"></textarea>
+</div>
+<div class="setup-setting">
+    <h2>Link your website</h2>
+    <p>
+        This step is optional, but if someone ends up on your guestbook you'll
+        probably want to help them find their way back to your website!
+    </p>
+    <input type="text" id="website" placeholder="Link your website..." />
+</div>
+<div class="setup-buttons">
+    <button id="continue">Continue</button>
+</div>

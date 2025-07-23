@@ -1,0 +1,38 @@
+<div class="setup-setting">
+    <h2>Choose how users sign your guestbook</h2>
+    <select id="fields">
+        <option value="name-comment-website">Name, comment, and website</option>
+        <option value="name-comment">Name and comment</option>
+        <option value="name">Name only</option>
+    </select>
+</div>
+<div class="setup-setting">
+    <h2>Set character limits</h2>
+    <p>Limit how long each field can be.</p>
+    <label for="charlimit-name" id="charlimit-name-label">Name</label>
+    <input type="number" id="charlimit-name" value="20" />
+    <label for="charlimit-comment" id="charlimit-comment-label">Comment</label>
+    <input type="number" id="charlimit-comment" value="200" />
+    <label for="charlimit-website" id="charlimit-website-label"
+        >Website URL</label
+    >
+    <input type="number" id="charlimit-website" value="40" />
+</div>
+<div class="setup-setting">
+    <h2>Restrict words in names, comments, and fields</h2>
+    <p>
+        This step is optional, but you probably want to add some not very nice
+        words here so that people don't say them.
+    </p>
+    <div class="restrictedwords">
+        <input
+            type="text"
+            id="restricted-word"
+            placeholder="Restricted word..."
+        />
+        <button id="add-restricted-word">+</button>
+    </div>
+</div>
+<div class="setup-buttons">
+    <button id="continue">Continue</button>
+</div>

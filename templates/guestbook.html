@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/root.css" />
+        <link rel="stylesheet" href="/static/retrospace.css" id="theme-css" />
+        <title>{{ data.name }}</title>
+    </head>
+    <body class="retro-space">
+        <div id="main">
+            <div id="top">
+                <h1>{{ data.name }}</h1>
+                <p id="description">{{ data.description }}</p>
+                <a href="{{ data.website }}">{{ data.website }}</a>
+            </div>
+            <div id="middle">
+                <div id="signs">
+                    <div class="sign"></div>
+                </div>
+            </div>
+        </div>
+        <p class="foot">
+            <a href="https://github.com/jab11n/openguestbook">Repo</a> |
+            <a href="https://opensource.org/license/mit">MIT License</a> | Made
+            with ❤ and Flask for
+            <a href="https://summer.hackclub.com">Hack Club Summer of Making</a>
+            by <a href="https://github.com/jab11n">Jab11n</a>
+        </p>
+
+        <script src="/static/guestbook/guestbook.js"></script>
+    </body>
+</html>
