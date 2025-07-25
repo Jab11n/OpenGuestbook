@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/root.css" />
+        <link rel="stylesheet" href="/static/{{ theme }}.css" id="theme-css" />
+        <link rel="icon" href="/static/favicon.ico" />
+        <title>Guestbook Admin</title>
+    </head>
+    <body>
+        <div id="main">
+            <div id="top">
+                <h1>Guestbook Admin</h1>
+                <p>You need to log in to prove you're the actual admin!</p>
+            </div>
+            <div id="middle">
+                <input
+                    type="password"
+                    id="key-input"
+                    placeholder="Admin key goes here..."
+                />
+                <button id="submit">Submit</button>
+            </div>
+        </div>
+
+        <script src="/static/admin/admin-login.js"></script>
+    </body>
+</html>

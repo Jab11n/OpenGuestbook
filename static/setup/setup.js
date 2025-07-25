@@ -56,29 +56,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         "none";
                     if (themeChanger.value == "retro-space") {
                         document.getElementById("theme-css").href =
-                            "/static/retrospace.css";
-                        document.getElementById("page-theme-css").href =
-                            "/static/setup/setup-retrospace.css";
+                            "/static/retro-space.css";
                     } else if (themeChanger.value == "retro-dark") {
                         document.getElementById("theme-css").href =
-                            "/static/retrodark.css";
-                        document.getElementById("page-theme-css").href =
-                            "/static/setup/setup-retrodark.css";
+                            "/static/retro-dark.css";
                     } else if (themeChanger.value == "retro-light") {
                         document.getElementById("theme-css").href =
-                            "/static/retrolight.css";
-                        document.getElementById("page-theme-css").href =
-                            "/static/setup/setup-retrolight.css";
+                            "/static/retro-light.css";
                     } else if (themeChanger.value == "modern-dark") {
                         document.getElementById("theme-css").href =
-                            "/static/moderndark.css";
-                        document.getElementById("page-theme-css").href =
-                            "/static/setup/setup-moderndark.css";
+                            "/static/modern-dark.css";
                     } else if (themeChanger.value == "modern-light") {
                         document.getElementById("theme-css").href =
-                            "/static/modernlight.css";
-                        document.getElementById("page-theme-css").href =
-                            "/static/setup/setup-modernlight.css";
+                            "/static/modern-light.css";
                     }
                 }
             });
@@ -319,7 +309,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         body: JSON.stringify(setup),
                     });
                     if (response.ok) {
-                        `Admin=${encodeURIComponent(setup.key)}; max-age=${
+                        document.cookie = `Admin=${encodeURIComponent(
+                            setup.key
+                        )}; max-age=${
                             60 * 60 * 24 * 30
                         }; path=/; SameSite=Strict`;
                         window.location.reload();

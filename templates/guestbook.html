@@ -4,10 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/static/root.css" />
-        <link rel="stylesheet" href="/static/retrospace.css" id="theme-css" />
+        <link rel="stylesheet" href="/static/{{ theme }}.css" id="theme-css" />
+        <link rel="icon" href="/static/favicon.ico" />
         <title>{{ data.name }}</title>
     </head>
-    <body class="retro-space">
+    <body>
         <div id="main">
             <div id="top">
                 <h1>{{ data.name }}</h1>
@@ -15,9 +16,33 @@
                 <a href="{{ data.website }}">{{ data.website }}</a>
             </div>
             <div id="middle">
-                <div id="signs">
-                    <div class="sign"></div>
+                <div id="inputs">
+                    <label for="input-name" id="name-label">Name</label>
+                    <input
+                        type="text"
+                        id="input-name"
+                        placeholder="Your Name"
+                    />
+                    <label for="input-comment" id="comment-label"
+                        >Comment</label
+                    >
+                    <input
+                        type="text"
+                        id="input-comment"
+                        placeholder="Leave a comment!"
+                    />
+                    <label for="input-website" id="website-label"
+                        >Website</label
+                    >
+                    <input
+                        type="text"
+                        id="input-website"
+                        placeholder="https://www.example.com/"
+                    />
+                    <button id="submit">Submit</button>
                 </div>
+                <div id="signs"></div>
+                <button id="load-more">Load More</button>
             </div>
         </div>
         <p class="foot">
@@ -29,5 +54,16 @@
         </p>
 
         <script src="/static/guestbook/guestbook.js"></script>
+        <script>
+            const pubData = {{ data | tojson }}; // with code editors this will show as an error: it's not! this is an essential part so if you're modifying this yourself please don't break it :)
+            if (!pubData.fields.includes("comment")) {
+                document.getElementById("comment-label").style.display = 'none';
+                document.getElementById("comment-input").style.display = 'none';
+            }
+            if (!pubData.fields.includes("website")) {
+                document.getElementById("website-label").style.display = 'none';
+                document.getElementById("website-input").style.display = 'none';
+            }
+        </script>
     </body>
 </html>
