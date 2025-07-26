@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("generate").addEventListener("click", () => {
         newKey = genKey(24);
         navigator.clipboard.writeText(newKey);
+        currentConfig.key = newKey;
     });
 
     document.getElementById("save").addEventListener("click", async () => {
@@ -178,10 +179,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (response.status == 200) {
             if (newKey != currentConfig.key) {
                 document.cookie = `Admin=${encodeURIComponent(
-                    setup.key
+                    currentConfig.key
                 )}; max-age=${60 * 60 * 24 * 30}; path=/; SameSite=Strict`;
             }
-            alert("Success!");
             window.location.reload();
         } else {
             alert(
