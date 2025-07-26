@@ -139,17 +139,31 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.getElementById("fields").value ==
                 "name-comment-website"
                     ? [
-                          document.getElementById("charlimit-name").value,
-                          document.getElementById("charlimit-comment").value,
-                          document.getElementById("charlimit-website").value,
+                          Number(
+                              document.getElementById("charlimit-name").value
+                          ),
+                          Number(
+                              document.getElementById("charlimit-comment").value
+                          ),
+                          Number(
+                              document.getElementById("charlimit-website").value
+                          ),
                       ]
                     : document.getElementById("fields").value == "name-comment"
                     ? [
-                          document.getElementById("charlimit-name").value,
-                          document.getElementById("charlimit-comment").value,
+                          Number(
+                              document.getElementById("charlimit-name").value
+                          ),
+                          Number(
+                              document.getElementById("charlimit-comment").value
+                          ),
                           null,
                       ]
-                    : [document.getElementById("charlimit-name"), null, null],
+                    : [
+                          Number(document.getElementById("charlimit-name")),
+                          null,
+                          null,
+                      ],
             restricted_words: currentConfig.restricted_words,
             key: newKey ? newKey : currentConfig.key,
         };

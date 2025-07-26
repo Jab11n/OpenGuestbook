@@ -126,6 +126,12 @@ def api_sign():
         any(word.lower() in (reqData.get('website')).lower() for word in config['restricted_words'])
     ):
         return jsonify({"status": "error", "message": "this contains blocked words :("}), 403
+    elif len(reqData.get('name')) > config['char_limits'][0]:
+        return jsonify({"status": "error", "message": f"name exceeds character limit ({str(config['char_limits'][0])})"}), 403
+    elif len(reqData.get('comment')) > config['char_limits'][1]:
+        return jsonify({"status": "error", "message": f"comment exceeds character limit ({str(config['char_limits'][1])})"}), 403
+    elif len(reqData.get('website')) > config['char_limits'][2]:
+        return jsonify({"status": "error", "message": f"website exceeds character limit ({str(config['char_limits'][2])})"}), 403
     
     add_entry(
         name=reqData['name'],

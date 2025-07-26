@@ -208,6 +208,6 @@ __marimo__/
 
 
 # this app
-database.db
+guestbook.db
 config.json
 plans.py

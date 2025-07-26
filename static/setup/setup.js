@@ -207,7 +207,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     if (document.getElementById("fields").value == "name") {
                         setup.fields.push("name");
                         setup.char_limits.push(
-                            document.getElementById("charlimit-name").value
+                            Number(
+                                document.getElementById("charlimit-name").value
+                            )
                         );
                         setup.char_limits.push(null);
                         setup.char_limits.push(null);
@@ -218,10 +220,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         setup.fields.push("name");
                         setup.fields.push("comment");
                         setup.char_limits.push(
-                            document.getElementById("charlimit-name").value
+                            Number(
+                                document.getElementById("charlimit-name").value
+                            )
                         );
                         setup.char_limits.push(
-                            document.getElementById("charlimit-comment").value
+                            Number(
+                                document.getElementById("charlimit-comment")
+                                    .value
+                            )
                         );
                         setup.char_limits.push(null);
                     } else {
@@ -229,13 +236,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                         setup.fields.push("comment");
                         setup.fields.push("website");
                         setup.char_limits.push(
-                            document.getElementById("charlimit-name").value
+                            Number(
+                                document.getElementById("charlimit-name").value
+                            )
                         );
                         setup.char_limits.push(
-                            document.getElementById("charlimit-comment").value
+                            Number(
+                                document.getElementById("charlimit-comment")
+                                    .value
+                            )
                         );
                         setup.char_limits.push(
-                            document.getElementById("charlimit-website").value
+                            Number(
+                                document.getElementById("charlimit-website")
+                                    .value
+                            )
                         );
                     }
 
