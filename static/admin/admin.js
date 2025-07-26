@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("name").value = currentConfig.name;
     document.getElementById("description").value = currentConfig.description;
     document.getElementById("website").value = currentConfig.website;
-    document.getAnimations("theme").value = currentConfig.theme;
+    document.getElementById("theme").value = currentConfig.theme;
     if (document.getElementById("theme").value == "custom") {
         document.getElementById("custom-css").style.display = `block`;
         document.getElementById("custom-css-p").style.display = `block`;
@@ -153,6 +153,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             restricted_words: currentConfig.restricted_words,
             key: newKey ? newKey : currentConfig.key,
         };
+
         let response = await fetch("/api/admin", {
             method: "POST",
             body: JSON.stringify(data),
@@ -161,6 +162,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             },
         });
         if (response.ok) {
+            if (newKey != currentConfig.key) {
+                document.cookie = `Admin=${encodeURIComponent(
+                    setup.key
+                )}; max-age=${60 * 60 * 24 * 30}; path=/; SameSite=Strict`;
+            }
             alert("Success!");
             window.location.reload();
         } else {
@@ -170,5 +176,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }\n${await response.text()}`
             );
         }
+    });
+    document.getElementById("logout").addEventListener("click", () => {
+        document.cookie =
+            "Admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = "/";
     });
 });

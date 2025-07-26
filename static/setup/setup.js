@@ -255,9 +255,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             copyButton.addEventListener("click", () => {
                 if (accessChooser.value == "link") {
-                    navigator.clipboard.writeText("test - link");
+                    navigator.clipboard.writeText(window.location.origin);
                 } else if (accessChooser.value == "embed") {
-                    navigator.clipboard.writeText("test - embed");
+                    navigator.clipboard.writeText(
+                        `<iframe src="${window.location.origin}"></iframe>`
+                    );
                 }
             });
 

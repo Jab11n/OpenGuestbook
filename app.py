@@ -79,7 +79,7 @@ def guestbook():
     else:
         with open("config.json", "r") as f:
             data = json.load(f)
-            return render_template('setup.html', key=data['key'])
+            return render_template('setup.html', key=data['key'], theme=data["theme"])
 
 @app.route('/admin')
 def admin():
@@ -146,9 +146,15 @@ def admin_login():
 @app.route('/api/admin', methods=['POST'])
 def update_admin():
     data = request.get_json()
-    with open("config.json", "w") as f:
-        json.dump(data, f, indent=4)
-    return jsonify({"status": "ok", "message": "updated settings ok"}), 200
+    token = request.cookies.get("Admin")
+    with open("config.json") as t:
+        config = json.load(t)
+        if config["key"] == token:
+            with open("config.json", "w") as f:
+                json.dump(data, f, indent=4)
+            return jsonify({"status": "ok", "message": "updated settings ok"}), 200
+        else:
+            return jsonify({"status": "not ok", "message": "you are not the admin"}), 403
 
 
 if __name__ == '__main__':
