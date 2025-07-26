@@ -52,6 +52,7 @@ def add_entry(name, comment, website):
     cursor = conn.cursor()
     cursor.execute('INSERT INTO guestbook (name, comment, website, time) VALUES (?, ?, ?, ?)', (name, comment, website, time.time()))
     conn.commit()
+    conn.close()
 
 def get_entries(page=1, page_size=20):
     conn = sqlite3.connect('guestbook.db')
@@ -68,6 +69,7 @@ def delete_entry(entry_id):
     cursor = conn.cursor()
     cursor.execute('DELETE FROM guestbook WHERE id = ?', (entry_id,))
     conn.commit()
+    conn.close()
 
 @app.route('/')
 def guestbook():
@@ -103,6 +105,8 @@ def api_setup():
             json.dump(data, f, indent=4)
         setup = True
         return "Setup complete", 200
+    else:
+        return "You've already done setup!", 418
 
 @app.route('/api/signs', methods=['GET'])
 def api_signs():
