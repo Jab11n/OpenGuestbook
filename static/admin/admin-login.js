@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.cookie = `Admin=${encodeURIComponent(
                     pwField.value
                 )}; max-age=${60 * 60 * 24 * 30}; path=/; SameSite=Strict`;
+                window.location.reload();
             } else {
                 let resData = await response.json();
                 alert(

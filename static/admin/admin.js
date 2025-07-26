@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "Content-Type": "application/json",
             },
         });
-        if (response.ok) {
+        if (response.status == 200) {
             if (newKey != currentConfig.key) {
                 document.cookie = `Admin=${encodeURIComponent(
                     setup.key
