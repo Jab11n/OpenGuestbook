@@ -124,23 +124,26 @@ def api_sign():
         config = json.load(f)
     if not reqData or not reqData.get('name'):
         return jsonify({"status": "error", "message": "Name is required :("}), 400
-    elif (
-        any(word.lower() in reqData.get('name').lower() for word in config['restricted_words']) or
-        any(word.lower() in (reqData.get('comment')).lower() for word in config['restricted_words']) or
-        any(word.lower() in (reqData.get('website')).lower() for word in config['restricted_words'])
+    name = reqData.get('name')
+    comment = reqData.get('comment')
+    website = reqData.get('website')
+    if (
+        any(word.lower() in name.lower() for word in config['restricted_words']) or
+        (comment is not None and any(word.lower() in comment.lower() for word in config['restricted_words'])) or
+        (website is not None and any(word.lower() in website.lower() for word in config['restricted_words']))
     ):
         return jsonify({"status": "error", "message": "this contains blocked words :("}), 403
-    elif len(reqData.get('name')) > config['char_limits'][0]:
+    elif len(name) > config['char_limits'][0]:
         return jsonify({"status": "error", "message": f"name exceeds character limit ({str(config['char_limits'][0])})"}), 403
-    elif len(reqData.get('comment')) > config['char_limits'][1]:
+    elif comment is not None and len(comment) > config['char_limits'][1]:
         return jsonify({"status": "error", "message": f"comment exceeds character limit ({str(config['char_limits'][1])})"}), 403
-    elif len(reqData.get('website')) > config['char_limits'][2]:
+    elif website is not None and len(website) > config['char_limits'][2]:
         return jsonify({"status": "error", "message": f"website exceeds character limit ({str(config['char_limits'][2])})"}), 403
     
     add_entry(
-        name=reqData['name'],
-        comment=reqData.get('comment') or None if "comment" in config['fields'] else None,
-        website=reqData.get('website') or None if "website" in config['fields'] else None
+        name=name,
+        comment=comment if "comment" in config['fields'] else None,
+        website=website if "website" in config['fields'] else None
     )
     return jsonify({"status": "ok", "message": "Entry added! :D"}), 201
 
